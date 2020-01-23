@@ -6,5 +6,4 @@ let mission;
 let period;
 
 alert('Хорошего дня!');
-
 console.log('Удачи!');
