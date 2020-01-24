@@ -9,7 +9,10 @@ const multNum = numArr.reduce((a, b) => a * b);
 console.log(`Произведение цифр числа 266219: ${multNum}`);
 
 // Возведение в степень
-console.log(`Возведение в степень: ${multNum**3}`);
+const pow = multNum**3;
+
+// Возведение в степень
+console.log(`Возведение в степень: ${pow}`);
 
 // Вывод первых 2х цифр
-console.log(`Первые две цифры: ${(multNum**3).toString().substr(0, 2)}`);
+console.log(`Первые две цифры: ${pow.toString().substring(0, 2)}`);
