@@ -1,21 +1,21 @@
 // Усложненное задание
 
-let num = 266219,
-numArr = String(num).split(''), //массив из цифр числа num
-mult = 1; // переменная для произведения цифр num
+const num = 266219;
+let numArr = num.toString().split(''); //массив из цифр числа num
 
+
+// Вывод массива
 console.log(numArr);
 
-//цикл for для перемножения цифр
-for (let i = 0; i < numArr.length; i++) {
-    mult = mult * numArr[i];
-}
+let result = numArr.reduce(function(mult, current) {
+    return mult * current;
+}, 1);
 
 // Вывод в консоль результата перемножения цифр
-console.log('Произведение цифр числа 266219 равно ' + mult);
+console.log(`Произведение цифр числа 266219: ${result}`);
 
 // Возведение в степень
-console.log(mult + ' в степени 3 равен ' + mult**3);
+console.log(`Возведение в степень: ${result**3}`);
 
 // Вывод первых 2х цифр
-console.log('Первые две цифры: ' + String(mult).substr(0, 2));
+console.log(`Первые две цифры: ${result.toString().substr(0, 2)}`);
