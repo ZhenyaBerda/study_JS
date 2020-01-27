@@ -2,12 +2,12 @@
 
 // Задание 1
 
-let lang = 'ru',
+let lang = 'en',
 daysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
 daysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
 days = [
-    ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
-    ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    ['ru','понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
+    ['en','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 ];
 
 // Вариант через if
