@@ -2,13 +2,13 @@
 
 // Задание 1
 
-let lang = 'en',
+let lang = 'ru',
 daysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
 daysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-days = [
+days = new Map([
     ['ru', daysRu],
     ['en', daysEn]
-];
+]);
 
 // Вариант через if
 if (lang === 'ru') {
@@ -31,9 +31,9 @@ switch (lang) {
         console.log('Error');
 }
 
-// Вариант через массив (???)
-let checkLang = (lang === days[0][0]) ? console.log(days[0][1]) : 
-    (lang === days[1][0]) ? console.log(days[1][1]) : console.log('Error');
+// Вариант через массив 
+let checkLang = days.get(lang);
+console.log(checkLang);
 
 // Задание 2
 let namePerson = 'Максим';
