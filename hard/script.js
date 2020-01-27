@@ -31,10 +31,13 @@ switch (lang) {
         console.log('Error');
 }
 
-// Вариант через массив
+// Вариант через массив (???)
+let checkLang = (lang === days[0][0]) ? console.log(days[0]) : 
+    (lang === days[1][0]) ? console.log(days[1]) : console.log('Error');
 
 // Задание 2
 let namePerson = 'Максим';
 
-let position = (namePerson === 'Артем') ? 'директор' : (namePerson === 'Максим') ? 'преподаватель' : 'студент';
+let position = (namePerson === 'Артем') ? 'директор' : 
+    (namePerson === 'Максим') ? 'преподаватель' : 'студент';
 console.log(`${namePerson} ${position}`);
