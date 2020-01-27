@@ -1,18 +1,40 @@
-// Усложненное задание
+'use strict';
 
-const num = 266219,
-numArr = num.toString().split(''); //массив из цифр числа num
+// Задание 1
 
-const multNum = numArr.reduce((a, b) => a * b);
+let lang = 'ru',
+daysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
+daysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+days = [
+    ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
+    ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+];
 
-// Вывод в консоль результата перемножения цифр
-console.log(`Произведение цифр числа 266219: ${multNum}`);
+// Вариант через if
+if (lang === 'ru') {
+    console.log(daysRu);
+} else if (lang === 'en') {
+    console.log(daysEn);
+} else { 
+    console.log('Error');
+}
 
-// Возведение в степень
-const pow = multNum**3;
+// Вариант через switch
+switch (lang) {
+    case 'ru':
+        console.log(daysRu);
+        break;
+    case 'en':
+        console.log(daysEn);
+        break;
+    default:
+        console.log('Error');
+}
 
-// Возведение в степень
-console.log(`Возведение в степень: ${pow}`);
+// Вариант через массив
 
-// Вывод первых 2х цифр
-console.log(`Первые две цифры: ${pow.toString().substring(0, 2)}`);
+// Задание 2
+let namePerson = 'Максим';
+
+let position = (namePerson === 'Артем') ? 'директор' : (namePerson === 'Максим') ? 'преподаватель' : 'студент';
+console.log(`${namePerson} ${position}`);
