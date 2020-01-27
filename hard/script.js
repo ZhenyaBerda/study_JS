@@ -6,8 +6,8 @@ let lang = 'en',
 daysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
 daysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
 days = [
-    ['ru','понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
-    ['en','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    ['ru', daysRu],
+    ['en', daysEn]
 ];
 
 // Вариант через if
@@ -32,8 +32,8 @@ switch (lang) {
 }
 
 // Вариант через массив (???)
-let checkLang = (lang === days[0][0]) ? console.log(days[0]) : 
-    (lang === days[1][0]) ? console.log(days[1]) : console.log('Error');
+let checkLang = (lang === days[0][0]) ? console.log(days[0][1]) : 
+    (lang === days[1][0]) ? console.log(days[1][1]) : console.log('Error');
 
 // Задание 2
 let namePerson = 'Максим';
