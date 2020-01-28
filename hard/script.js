@@ -1,10 +1,10 @@
 'use strict';
 
 function output (data) {
-    let str;
+    
     // проверка на строку
     if (typeof(data) === 'string') {
-        str = data.trim();
+        let str = data.trim();
         if (str.length > 30) {
             return str.replace(str.slice(30), '...');
         }
