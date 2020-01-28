@@ -1,43 +1,18 @@
 'use strict';
 
-// Задание 1
-
-let lang = 'ru',
-daysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресение'],
-daysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-days = new Map([
-    ['ru', daysRu],
-    ['en', daysEn]
-]);
-
-// Вариант через if
-if (lang === 'ru') {
-    console.log(daysRu);
-} else if (lang === 'en') {
-    console.log(daysEn);
-} else { 
-    console.log('Error');
+function output (data) {
+    let str;
+    // проверка на строку
+    if (typeof(data) === 'string') {
+        str = data.trim();
+        if (str.length > 30) {
+            return str.replace(str.slice(30), '...');
+        }
+    } else {
+        return 'Введена не строка';
+    }
 }
 
-// Вариант через switch
-switch (lang) {
-    case 'ru':
-        console.log(daysRu);
-        break;
-    case 'en':
-        console.log(daysEn);
-        break;
-    default:
-        console.log('Error');
-}
-
-// Вариант через массив 
-let checkLang = days.get(lang);
-console.log(checkLang);
-
-// Задание 2
-let namePerson = 'Максим';
-
-let position = (namePerson === 'Артем') ? 'директор' : 
-    (namePerson === 'Максим') ? 'преподаватель' : 'студент';
-console.log(`${namePerson} ${position}`);
+console.log(output('       абвгдеёжзийклмнопрстуфхцчшщъыьэюя          '));
+console.log(output(5235452354));
+console.log(output(true));
