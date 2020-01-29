@@ -2,13 +2,8 @@
 
 function output(data) {
     // проверка на строку
-    if (typeof (data) === 'string') {
+    if (typeof (data) === 'string' && isNaN(data)) {
         let str = data.trim();
-
-        // Проверка наличия цифр и букв в одной строке ???
-        if (/\d/.test(data) && !/^\d+$/.test(data)) {
-            return 'Введена не строка';
-        }
 
         // длина строки
         if (str.length > 30) {
