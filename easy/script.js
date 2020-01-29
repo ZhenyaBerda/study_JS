@@ -46,10 +46,10 @@ const getExpensesMonth = function() {
             amount = prompt('Во сколько это обойдется');
         } while (!isNumber(amount));
 
-        sum += amount;
+        sum += Number(amount);
     }
 
-    console.log(expenses);
+    console.log(sum);
     return sum;
 },
 
