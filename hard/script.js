@@ -1,30 +1,46 @@
 'use strict';
 
-function output(data) {
-    // проверка на строку
-    if (typeof (data) === 'string') {
-        let str = data.trim();
+// Задание 1
+let arr = [111111111, 22222222, 333333333, 444444444, 5555555, 666666666, 7777777777];
 
-        // Проверка наличия цифр и букв в одной строке ???
-        if (/\d/.test(data) && !/^\d+$/.test(data)) {
-            return 'Введена не строка';
-        }
+for (let i = 0; i < arr.length; i++) {
 
-        // длина строки
-        if (str.length > 30) {
-            return str.replace(str.slice(30), '...');
-        } else {
-            return str;
-        }
-    } else {
-        return 'Введена не строка';
+    if (arr[i].toString().slice(0, 1) === '2' || arr[i].toString().slice(0, 1) === '4') {
+        console.log(arr[i]);
     }
+
 }
 
-console.log(output('       абвгдеё         '));
-console.log(output('   а  а а  а а  а а   '));
-console.log(output('456646'));
-console.log(output('154dasd5454'));
-console.log(output('       абвгдеёжзийклмнопрстуфхцчшщъыьэюя          '));
-console.log(output(5235452354));
-console.log(output(true));
+// Задание 2
+
+for (let i = 2; i <= 100; i++) {
+
+    // случай для 2
+    if (i === 2) {
+        console.log(`${i} делится на 1 и ${i}`);
+        continue;
+    }
+
+    // случай для 3
+    if (i === 3) {
+        console.log(`${i} делится на 1 и ${i}`);
+        continue;
+    }
+
+    // случай для 5
+    if (i === 5) {
+        console.log(`${i} делится на 1 и ${i}`);
+        continue;
+    }
+
+    // случай для 7
+    if (i === 7) {
+        console.log(`${i} делится на 1 и ${i}`);
+        continue;
+    }
+
+    // проверка чисел
+    if( i % 2 !== 0 && i % 3 !== 0 && i % 5 !== 0 && i % 7 !== 0 ) {
+        console.log(`${i} делится на 1 и ${i}`);
+    }
+}
