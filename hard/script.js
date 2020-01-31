@@ -1,23 +1,17 @@
 'use strict';
 
-// Задание 1
-let arr = [111111111, 22222222, 333333333, 444444444, 5555555, 666666666, 7777777777];
+let week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+    date = new Date(),
+    element = document.getElementById('text');
 
-arr.forEach(function (item, i, arr) {
-    item = item.toString();
-    if (item.slice(0,1) === '2' || item.slice(0,1) === '4'){
-        console.log(item);
+week.forEach(function (item, i) {
+    if ((i === date.getDay() && i === 0) || (i === date.getDay() && i === 6)) {
+        element.innerHTML += '<b><i>' + item + '</i></b><br>';
+    } else if (i === date.getDay()) {
+        element.innerHTML += '<b>' + item + '</b><br>';
+    } else if (i === 0 || i === 6) {
+        element.innerHTML += '<i>' + item + '</i><br>';
+    } else {
+        element.innerHTML += item + '<br>';
     }
 });
-
-
-// Задание 2
-
-outer: for (let i = 2; i <= 100; i++) {
-    for (let j = 2; j < i; j++) {
-        if (i % j === 0) {
-            continue outer;
-        }
-    }
-    console.log(`${i} делится на 1 и ${i}`);
-}
