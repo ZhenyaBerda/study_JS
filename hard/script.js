@@ -1,9 +1,9 @@
 'use strict';
 
 // Задание 1
-let arr = [111111111, 22222222, 333333333, 444444444, 5555555, 666666666, 7777777777];
+const arr = [111111111, 22222222, 333333333, 444444444, 5555555, 666666666, 7777777777];
 
-arr.forEach(function (item, i, arr) {
+arr.filter(function (item) {
     item = item.toString();
     if (item.slice(0,1) === '2' || item.slice(0,1) === '4'){
         console.log(item);
