@@ -1,24 +1,27 @@
 'use strict';
+const week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+    element = document.getElementById('text'),
+// получение текущего дня недели
+    getCurDay = function () {
+        const date = new Date(),
+            days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        
+            return (days[date.getDay()]);
+    };
 
-let week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-    date = new Date(),
-    element = document.getElementById('text');
 
-week.forEach(function (item, i) {
-    let curDate;
-    if (date.getDay() !== 0) {
-        curDate = date.getDay() - 1;
-    } else {
-        curDate = 6;
+week.forEach(function (item) {
+    
+   let p = document.createElement('p');
+
+    if (item === 'saturday' || item === 'sunday') {
+        p.classList.add('bold');
+    }
+    if (item === getCurDay()) {
+        p.classList.add('italic');
     }
 
-    if ((i === curDate && i === 5) || (i === curDate && i === 6)) {
-        element.innerHTML += '<b><i>' + item + '</i></b><br>';
-    } else if (i === curDate) {
-        element.innerHTML += '<b>' + item + '</b><br>';
-    } else if (i === 5 || i === 6) {
-        element.innerHTML += '<i>' + item + '</i><br>';
-    } else {
-        element.innerHTML += item + '<br>';
-    }
+    p.textContent += item;
+    document.body.append(p);
+
 });
