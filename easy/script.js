@@ -83,7 +83,6 @@ const expenses = [],
 
         // сумма расходов
         getExpensesMonth: function () {
-
             for (let key in appData.expenses) {
                 appData.expensesMonth += appData.expenses[key];
             }
@@ -104,7 +103,6 @@ const expenses = [],
 
         // Функция определения статуса 
         getStatusIncome: function () {
-
             if (appData.budgetDay >= 1200) {
                 console.log('У вас высокий уровень дохода');
             } else if (appData.budgetDay >= 600 && appData.budgetDay < 1200) {
@@ -134,7 +132,6 @@ const expenses = [],
         calcSavedMoney: function () {
             return appData.budgetMonth * appData.period;
         }
-
     };
 
 appData.asking();
