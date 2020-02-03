@@ -76,7 +76,6 @@ const expenses = [],
                 } while (!isNumber(amount));
 
                 appData.expenses[key] = Number(amount);
-
             }
         },
 
