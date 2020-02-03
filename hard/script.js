@@ -22,6 +22,6 @@ week.forEach(function (item) {
     }
 
     p.textContent += item;
-    document.body.append(p);
+    document.body.appendChild(p);
 
 });
