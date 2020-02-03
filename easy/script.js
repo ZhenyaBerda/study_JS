@@ -40,7 +40,6 @@ const expenses = [],
 
         // Методы
         asking: function () {
-
             if (confirm('Есть у вас дополнительный источник заработка?')) {
                 let itemIncome, cashIncome;
 
