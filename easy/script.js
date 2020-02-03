@@ -5,6 +5,7 @@ const isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
+// Фукнция проверки на строку
 const isString = function (str) {
     return isNaN(str) && typeof (str) === 'string';
 };
@@ -135,7 +136,6 @@ const expenses = [],
         }
 
     };
-
 
 appData.asking();
 appData.getExpensesMonth();
