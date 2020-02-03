@@ -23,7 +23,7 @@ start();
 const expenses = [],
     // объект
     appData = {
-        budget: money, //прибыль
+        budget: Number(money), //прибыль
         income: {},
         addIncome: [],
         expenses: {}, //обязательные расходы
@@ -51,13 +51,13 @@ const expenses = [],
                     cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
                 } while (!isNumber(cashIncome));
 
-                appData.income[itemIncome] = cashIncome;
+                appData.income[itemIncome] = Number(cashIncome);
             }
 
-            let addExpenses; 
+            let addExpenses;
             do {
-            addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-                'Коммуналка, бензин, электроэнергия');
+                addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+                    'Коммуналка, бензин, электроэнергия');
             } while (!isString(addExpenses));
 
             appData.addExpenses = addExpenses.toLowerCase().split(', ');
@@ -118,12 +118,15 @@ const expenses = [],
         // информация о депозите
         getInfoDeposit: function () {
             if (appData.deposit) {
+                let percentDeposit, moneyDeposit;
                 do {
-                    appData.percentDeposit = prompt('Какой годовой процент?', 10);
+                   percentDeposit = prompt('Какой годовой процент?', 10);
                 } while (!isNumber(appData.percentDeposit));
+                appData.percentDeposit = Number(percentDeposit);
                 do {
-                    appData.moneyDeposit = prompt('Какая сумма заложена', 10000);
+                    moneyDeposit = prompt('Какая сумма заложена', 10000);
                 } while (!isNumber(appData.moneyDeposit));
+                appData.moneyDeposit = Number(moneyDeposit);
             }
         },
 
