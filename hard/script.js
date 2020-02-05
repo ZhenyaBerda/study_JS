@@ -17,8 +17,7 @@ let element = document.getElementById('text'),
     },
 
     // получение текущей даты и времени в текстовом виде
-    getTextDate = function () {
-        let curDate = new Date();
+    getTextDate = function (curDate) {
         let day = `${curDate.getDate()} ${getCurMonth(curDate)} ${curDate.getFullYear()}`,
             hour = curDate.getHours(),
             minute = curDate.getMinutes(),
@@ -40,8 +39,8 @@ let element = document.getElementById('text'),
         }
     },
     // сокращенная версия
-    getShortDate = function () {
-        let curDate = new Date();
+    getShortDate = function (curDate) {
+       
         let day = addZero(curDate.getDate()),
             month = addZero(curDate.getMonth() + 1),
             hour = addZero(curDate.getHours()),
@@ -53,8 +52,9 @@ let element = document.getElementById('text'),
     // вывод
 
     output = function () {
-        document.getElementById('text-time').textContent = getTextDate();
-        document.getElementById('short').textContent = getShortDate();
+        let curDate = new Date();
+        document.getElementById('text-time').textContent = getTextDate(curDate);
+        document.getElementById('short').textContent = getShortDate(curDate);
     };
 
 setInterval(output, 1000);
