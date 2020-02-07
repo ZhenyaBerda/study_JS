@@ -149,7 +149,7 @@ const expenses = [],
             }
         },
 
-
+        // возможные расходы
         getAddExpenses: function () {
             let addExpenses = addExpensesItem.value.toLowerCase().split(',');
             addExpenses.forEach(function (item) {
@@ -160,7 +160,7 @@ const expenses = [],
             });
         },
 
-
+        // возможные доходы
         getAddIncome: function () {
             addIncomeItems.forEach(function (item) {
                 let itemValue = item.value.trim();
@@ -235,18 +235,20 @@ const expenses = [],
     };
 
 
-
+// добавление блоков расходов/доходов
 expensesPlusBtn.addEventListener('click', appData.addExpensesBlock);
 incomePlusBtn.addEventListener('click', appData.addIncomeBlock);
 
-
+// автоматическое изменение периода при изменении range
 periodSelect.addEventListener('input', function () {
     let rangeValue = document.querySelector('.period-amount');
     rangeValue.textContent = periodSelect.value;
 });
 
+// получение всех input "Наименование"
 let collectName = document.querySelectorAll('input[placeholder="Наименование"]');
 
+// ограничение ввода: только русские буквы и знаки препинания
 collectName.forEach((elem) => {
     elem.addEventListener('input', function () {
         this.value = this.value.replace(/[^а-я А-Я,]/g, '');
@@ -254,37 +256,37 @@ collectName.forEach((elem) => {
 });
 
 
+// получение всех input "Сумма"
 let collectAmount = document.querySelectorAll('input[placeholder="Сумма"]');
-
+// ограничение ввода: только цифры
 collectAmount.forEach((elem) => {
     elem.addEventListener('input', function () {
         this.value = this.value.replace(/[^\d,]/g, '');
     });
 });
 
-
+// обработчик события для кнопки старт
 start.addEventListener('click', function (event) {
-
+    // проверка ввода бюджета
     if (salaryAmount.value !== '') {
         appData.start.apply(appData);
         let inputText = document.querySelectorAll('input[type=text] ');
 
-
+        // блокировка ввода во все input
         inputText.forEach(function (elem) {
             elem.readOnly = true;
-
         });
+
+        // открываем кнопку cancel и закрываем start
         start.style.display = 'none';
         cancelButton.style.display = 'block';
-        cancelButton.addEventListener('click', function (){
+
+        // на cancel навешиваем обработчик события click
+        cancelButton.addEventListener('click', function () {
             appData.reset();
         });
 
     } else {
         event.preventDefault();
     }
-});
-
-cancelButton.addEventListener('click', function () {
-
 });
