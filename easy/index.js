@@ -202,13 +202,14 @@ const expenses = [],
         }
     };
 
-start.addEventListener('click', function (event) {
-    if (salaryAmount.value === '') {
-        event.preventDefault();
-    }
-});
-
-start.addEventListener('click', appData.start);
+    start.addEventListener('click', function (event) {
+        if (salaryAmount.value === '') {
+            event.preventDefault();
+        } else {
+            start.addEventListener('click', appData.start.apply(appData));
+        }
+    });
+    
 expensesPlusBtn.addEventListener('click', appData.addExpensesBlock);
 incomePlusBtn.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', function () {

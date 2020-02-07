@@ -222,15 +222,22 @@ const expenses = [],
         }
     };
 
+
+
+
+
 start.addEventListener('click', function (event) {
     if (salaryAmount.value === '') {
         event.preventDefault();
+    } else {
+        start.addEventListener('click', appData.start.apply(appData));
     }
 });
 
-start.addEventListener('click', appData.start);
 expensesPlusBtn.addEventListener('click', appData.addExpensesBlock);
 incomePlusBtn.addEventListener('click', appData.addIncomeBlock);
+
+
 periodSelect.addEventListener('input', function () {
     let rangeValue = document.querySelector('.period-amount');
     rangeValue.textContent = periodSelect.value;
