@@ -225,12 +225,26 @@ const expenses = [],
         reset: function () {
             let inputItems = document.querySelectorAll('input[type=text] ');
             inputItems.forEach((elem) => {
-                elem.readOnly = false;
+                elem.disabled = false;
                 elem.value = '';
             });
 
             cancelButton.style.display = 'none';
             start.style.display = 'block';
+
+            // сброс данных
+            this.budget = 0;
+            this.income = {};
+            this.incomeMonth = 0;
+            this.addIncome = [];
+            this.expenses = {}; //обязательные расходы
+            this.addExpenses = []; // возможные расходы
+            this.deposit = false; // депозит
+            this.percentDeposit = 0;
+            this.moneyDeposit = 0;
+            this.budgetDay = 0;
+            this.budgetMonth = 0;
+            this.expensesMonth = 0; // расходы за месяц
         }
     };
 
@@ -274,7 +288,7 @@ start.addEventListener('click', function (event) {
 
         // блокировка ввода во все input
         inputText.forEach(function (elem) {
-            elem.readOnly = true;
+            elem.disabled = true;
         });
 
         // открываем кнопку cancel и закрываем start
@@ -283,7 +297,7 @@ start.addEventListener('click', function (event) {
 
         // на cancel навешиваем обработчик события click
         cancelButton.addEventListener('click', function () {
-            appData.reset();
+            appData.reset.apply(appData);
         });
 
     } else {
