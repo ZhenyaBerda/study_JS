@@ -74,12 +74,12 @@ const expenses = [],
             expensesMonthValue.value = appData.expensesMonth;
             addExpensesValue.value = appData.addExpenses.join(', ');
             addIncomeValue.value = appData.addIncome.join(', ');
-
+            incomePeriodValue.value = appData.calcPeriod();
 
             targetMonthValue.value = appData.getTargetMonth();
-
-
-            incomePeriodValue.value = appData.calcPeriod();
+            periodSelect.addEventListener('change', function () {
+                incomePeriodValue.value = appData.calcPeriod();
+            });
 
         },
 
