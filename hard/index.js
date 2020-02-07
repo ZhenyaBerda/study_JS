@@ -62,7 +62,7 @@ const expenses = [],
             this.showResult();
 
         },
-
+        // показать результаты
         showResult: function () {
             budgetMonthValue.value = this.budgetMonth;
             budgetDayValue.value = this.budgetDay;
@@ -79,6 +79,7 @@ const expenses = [],
 
         },
 
+        // добавление блока расходов
         addExpensesBlock: function () {
             let cloneExpensesItem = expensesItems[0].cloneNode(true);
             cloneExpensesItem.querySelector('.expenses-title').value = '';
@@ -98,6 +99,7 @@ const expenses = [],
             }
         },
 
+        // добавление блока доходов
         addIncomeBlock: function () {
             let cloneImcomeItem = incomeItems[0].cloneNode(true);
             cloneImcomeItem.querySelector('.income-title').value = '';
@@ -117,6 +119,7 @@ const expenses = [],
             }
         },
 
+        // получение расходов
         getExpenses: function () {
 
             expensesItems.forEach(function (item) {
@@ -130,6 +133,7 @@ const expenses = [],
 
         },
 
+        // получение доходов
         getIncome: function () {
             incomeItems.forEach(function (item) {
                 let itemIncome = item.querySelector('.income-title').value,
@@ -144,6 +148,7 @@ const expenses = [],
                 this.incomeMonth += this.income[key];
             }
         },
+
 
         getAddExpenses: function () {
             let addExpenses = addExpensesItem.value.toLowerCase().split(',');
@@ -211,34 +216,25 @@ const expenses = [],
             }
         },
 
+        //вычисление накоплений за месяц
         calcPeriod: function () {
             return this.budgetMonth * periodSelect.value;
+        },
+
+        // сброс
+        reset: function () {
+            let inputItems = document.querySelectorAll('input[type=text] ');
+            inputItems.forEach((elem) => {
+                elem.readOnly = false;
+                elem.value = '';
+            });
+
+            cancelButton.style.display = 'none';
+            start.style.display = 'block';
         }
     };
 
 
-
-
-
-start.addEventListener('click', function (event) {
-
-    if (salaryAmount.value !== '') {
-
-        appData.start.apply(appData);
-        let inputText = document.querySelectorAll('input[type=text] ');
-        inputText.forEach((elem) => {
-            elem.addEventListener('input', function (event) {
-                event.preventDefault();
-            });
-            start.style.display = 'none';
-            cancelButton.style.display = 'block';
-        });
-
-
-    } else {
-        event.preventDefault();
-    }
-});
 
 expensesPlusBtn.addEventListener('click', appData.addExpensesBlock);
 incomePlusBtn.addEventListener('click', appData.addIncomeBlock);
@@ -264,4 +260,31 @@ collectAmount.forEach((elem) => {
     elem.addEventListener('input', function () {
         this.value = this.value.replace(/[^\d,]/g, '');
     });
+});
+
+
+start.addEventListener('click', function (event) {
+
+    if (salaryAmount.value !== '') {
+        appData.start.apply(appData);
+        let inputText = document.querySelectorAll('input[type=text] ');
+
+
+        inputText.forEach(function (elem) {
+            elem.readOnly = true;
+
+        });
+        start.style.display = 'none';
+        cancelButton.style.display = 'block';
+        cancelButton.addEventListener('click', function (){
+            appData.reset();
+        });
+
+    } else {
+        event.preventDefault();
+    }
+});
+
+cancelButton.addEventListener('click', function () {
+
 });
