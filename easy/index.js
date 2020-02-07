@@ -77,7 +77,8 @@ const expenses = [],
             incomePeriodValue.value = appData.calcPeriod();
 
             targetMonthValue.value = appData.getTargetMonth();
-            periodSelect.addEventListener('change', function () {
+
+            periodSelect.addEventListener('input', function () {
                 incomePeriodValue.value = appData.calcPeriod();
             });
 

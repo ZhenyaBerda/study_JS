@@ -79,6 +79,9 @@ const expenses = [],
 
 
             incomePeriodValue.value = appData.calcPeriod();
+            periodSelect.addEventListener('input', function () {
+                incomePeriodValue.value = appData.calcPeriod();
+            });
 
         },
 
