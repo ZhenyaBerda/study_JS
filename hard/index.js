@@ -230,7 +230,7 @@ start.addEventListener('click', function (event) {
     if (salaryAmount.value === '') {
         event.preventDefault();
     } else {
-        start.addEventListener('click', appData.start.apply(appData));
+        appData.start.apply(appData);
     }
 });
 
