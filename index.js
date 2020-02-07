@@ -203,16 +203,16 @@ const expenses = [],
 
         // информация о депозите
         getInfoDeposit: function () {
-            if (appData.deposit) {
+            if (this.deposit) {
                 let percentDeposit, moneyDeposit;
                 do {
                     percentDeposit = prompt('Какой годовой процент?', 10);
-                } while (!isNumber(appData.percentDeposit));
-                appData.percentDeposit = Number(percentDeposit);
+                } while (!isNumber(this.percentDeposit));
+                this.percentDeposit = Number(percentDeposit);
                 do {
                     moneyDeposit = prompt('Какая сумма заложена', 10000);
-                } while (!isNumber(appData.moneyDeposit));
-                appData.moneyDeposit = Number(moneyDeposit);
+                } while (!isNumber(this.moneyDeposit));
+                this.moneyDeposit = Number(moneyDeposit);
             }
         },
 
