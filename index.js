@@ -232,6 +232,17 @@ const expenses = [],
             cancelButton.style.display = 'none';
             start.style.display = 'block';
 
+            for (let i = 1; i < expensesItems.length; i++) {
+                expensesItems[i].remove();
+            }
+            expensesPlusBtn.style.display = 'block';
+
+            for (let i = 1; i < incomeItems.length; i++) {
+                incomeItems[i].remove();
+            }
+            incomePlusBtn.style.display = 'block';
+
+
             // сброс данных
             this.budget = 0;
             this.income = {};
@@ -245,6 +256,11 @@ const expenses = [],
             this.budgetDay = 0;
             this.budgetMonth = 0;
             this.expensesMonth = 0; // расходы за месяц
+            
+
+            periodSelect.value = 1;
+            let rangeValue = document.querySelector('.period-amount');
+            rangeValue.textContent = periodSelect.value;
         }
     };
 
