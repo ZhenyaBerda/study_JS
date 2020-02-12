@@ -86,7 +86,7 @@ class AppData {
     }
 
     addExpensesBlock() {
-        let cloneExpensesItem = expensesItems[0].cloneNode(true);
+        const cloneExpensesItem = expensesItems[0].cloneNode(true);
         cloneExpensesItem.querySelector('.expenses-title').value = '';
         cloneExpensesItem.querySelector('.expenses-amount').value = '';
 
@@ -105,7 +105,7 @@ class AppData {
     }
 
     addIncomeBlock() {
-        let cloneImcomeItem = incomeItems[0].cloneNode(true);
+        const cloneImcomeItem = incomeItems[0].cloneNode(true);
         cloneImcomeItem.querySelector('.income-title').value = '';
         cloneImcomeItem.querySelector('.income-amount').value = '';
 
@@ -130,7 +130,7 @@ class AppData {
 
         expensesItems.forEach((item) => {
 
-            let itemExpenses = item.querySelector('.expenses-title').value,
+            const itemExpenses = item.querySelector('.expenses-title').value,
                 cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== '' && cashExpenses !== '') {
                 _this.expenses[itemExpenses] = +cashExpenses;
@@ -157,7 +157,7 @@ class AppData {
 
     getAddExpenses() {
         const _this = this;
-        let addExpenses = addExpensesItem.value.toLowerCase().split(',');
+        const addExpenses = addExpensesItem.value.toLowerCase().split(',');
         addExpenses.forEach((item) => {
             item = item.trim();
             if (item !== '') {
@@ -169,7 +169,7 @@ class AppData {
     getAddIncome() {
         const _this = this;
         addIncomeItems.forEach((item) => {
-            let itemValue = item.value.trim();
+            const itemValue = item.value.trim();
             if (itemValue !== '') {
                 _this.addIncome.push(itemValue);
             }
@@ -222,7 +222,7 @@ class AppData {
     }
 
     reset() {
-        let inputItems = document.querySelectorAll('input[type=text] ');
+        const inputItems = document.querySelectorAll('input[type=text] ');
         inputItems.forEach((elem) => {
             elem.disabled = false;
             elem.value = '';
