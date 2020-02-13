@@ -61,10 +61,8 @@ class AppData {
     start() {
         this.budget = +salaryAmount.value;
         this.getExpInc();
-        // this.getAddIncome();
         this.getAddExpInc();
         this.getExpensesMonth();
-        // this.getAddExpenses();
         this.getBudget();
         this.showResult();
     }
@@ -96,18 +94,17 @@ class AppData {
         const itemAmountCheck = cloneItem.querySelector('input[placeholder="Сумма"');
         itemAmountCheck.addEventListener('input', () => amountCheck(itemAmountCheck));
 
+        let btn;
         if (startStr === 'expenses') {
-            expensesItems[0].parentNode.insertBefore(cloneItem, expensesPlusBtn);
-            expensesItems = document.querySelectorAll('.expenses-items');
-            if (expensesItems.length === 3) {
-                expensesPlusBtn.style.display = 'none';
-            }
+            btn = expensesPlusBtn;
         } else {
-            incomeItems[0].parentNode.insertBefore(cloneItem, incomePlusBtn);
-            incomeItems = document.querySelectorAll('.income-items');
-            if (incomeItems.length === 3) {
-                incomePlusBtn.style.display = 'none';
-            }
+            btn = incomePlusBtn;
+        }
+
+        this[0].parentNode.parentNode.insertBefore(cloneItem, btn);
+        const items = document.querySelectorAll('${startStr}-items');
+        if (items.length === 3) {
+            btn.style.display = 'none';
         }
 
     }
@@ -133,51 +130,25 @@ class AppData {
 
     }
 
-    getAddExpenses() {
-        const addExpenses = addExpensesItem.value.toLowerCase().split(',');
-        addExpenses.forEach((item) => {
-            item = item.trim();
-            if (item !== '') {
-                this.addExpenses.push(item);
-            }
-        });
-    }
-
-    getAddIncome() {
-        addIncomeItems.forEach((item) => {
-            const itemValue = item.value.trim();
-            if (itemValue !== '') {
-                this.addIncome.push(itemValue);
-            }
-        });
-    }
-
     getAddExpInc() {
         const count = item => {
-            console.log(item);
             const startStr = item.className.split('_');
 
-            console.log(startStr);
             const itemValue = item.value.trim();
 
-            if (startStr === 'expenses-item') {
-                if (itemValue !== '') {
+            if (itemValue !== '') {
+                if (startStr === 'expenses-item') {
                     this.addExpenses.push(itemValue);
-                }
-            } else {
-                if (itemValue !== '') {
+                } else {
                     this.addIncome.push(itemValue);
                 }
             }
         };
 
-
-        addIncomeItems.forEach(count);
-
         const addExpenses = addExpensesItem.value.toLowerCase().split(',');
         addExpenses.forEach(count);
 
-
+        addIncomeItems.forEach(count);
 
     }
 
