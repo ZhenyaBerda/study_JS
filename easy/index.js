@@ -257,8 +257,8 @@ class AppData {
     eventsListeners() {
 
         // добавление блоков расходов/доходов
-        expensesPlusBtn.addEventListener('click', this.addExpensesBlock);
-        incomePlusBtn.addEventListener('click', this.addIncomeBlock);
+        expensesPlusBtn.addEventListener('click', () => this.addExpensesBlock);
+        incomePlusBtn.addEventListener('click', () => this.addIncomeBlock);
 
         // автоматическое изменение периода при изменении range
         periodSelect.addEventListener('input', () => {
