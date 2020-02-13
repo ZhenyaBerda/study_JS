@@ -60,8 +60,9 @@ class AppData {
 
     start() {
         this.budget = +salaryAmount.value;
-        this.getExpenses();
-        this.getIncome();
+        this.getExpInc();
+        //   this.getExpenses();
+        //    this.getIncome();
         this.getAddIncome();
         this.getExpensesMonth();
         this.getAddExpenses();
@@ -147,6 +148,27 @@ class AppData {
         for (let key in this.income) {
             this.incomeMonth += this.income[key];
         }
+    }
+
+    getExpInc() {
+
+        const count = item => {
+            const startStr = item.className.split('-')[0];
+            const itemTitle = item.querySelector(`.${startStr}-title`).value,
+                itemAmount = item.querySelector(`.${startStr}-amount`).value;
+
+            if (itemTitle !== '' && itemAmount !== '') {
+                this[startStr][itemTitle] = +itemAmount;
+            }
+        }
+
+        incomeItems.forEach(count);
+
+        expensesItems.forEach(count);
+        for (let key in this.income) {
+            this.incomeMonth += this.income[key];
+        }
+
     }
 
     getAddExpenses() {
