@@ -35,6 +35,7 @@ const isString = function (str) {
 
 const textCheck = function (input) {
     input.value = input.value.replace(/[^а-я А-Я,]/g, '');
+
 };
 
 const amountCheck = function (input) {
@@ -78,10 +79,8 @@ class AppData {
 
         incomePeriodValue.value = this.calcPeriod();
 
-        const _this = this;
-
         periodSelect.addEventListener('input', () =>
-            incomePeriodValue.value = _this.calcPeriod()
+            incomePeriodValue.value = this.calcPeriod()
         );
     }
 
@@ -90,12 +89,11 @@ class AppData {
         cloneExpensesItem.querySelector('.expenses-title').value = '';
         cloneExpensesItem.querySelector('.expenses-amount').value = '';
 
-        cloneExpensesItem.querySelector('input[placeholder="Наименование"').addEventListener('input', function () {
-            textCheck(this);
-        });
-        cloneExpensesItem.querySelector('input[placeholder="Сумма"').addEventListener('input', function () {
-            amountCheck(this);
-        });
+        const itemText = cloneExpensesItem.querySelector('input[placeholder="Наименование"');
+        itemText.addEventListener('input', () => textCheck(itemText));
+
+        const itemAmount = cloneExpensesItem.querySelector('input[placeholder="Сумма"');
+        itemAmount.addEventListener('input', () => amountCheck(itemAmount));
 
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlusBtn);
         expensesItems = document.querySelectorAll('.expenses-items');
@@ -109,12 +107,11 @@ class AppData {
         cloneImcomeItem.querySelector('.income-title').value = '';
         cloneImcomeItem.querySelector('.income-amount').value = '';
 
-        cloneImcomeItem.querySelector('input[placeholder="Наименование"').addEventListener('input', function () {
-            textCheck(this);
-        });
-        cloneImcomeItem.querySelector('input[placeholder="Сумма"').addEventListener('input', function () {
-            amountCheck(this);
-        });
+        const itemText = cloneImcomeItem.querySelector('input[placeholder="Наименование"');
+        itemText.addEventListener('input', () => textCheck(itemText));
+
+        const itemAmount = cloneImcomeItem.querySelector('input[placeholder="Сумма"');
+        itemAmount.addEventListener('input', () => amountCheck(itemAmount));
 
         incomeItems[0].parentNode.insertBefore(cloneImcomeItem, incomePlusBtn);
         incomeItems = document.querySelectorAll('.income-items');
@@ -126,27 +123,24 @@ class AppData {
 
 
     getExpenses() {
-        const _this = this;
-
         expensesItems.forEach((item) => {
 
             const itemExpenses = item.querySelector('.expenses-title').value,
                 cashExpenses = item.querySelector('.expenses-amount').value;
             if (itemExpenses !== '' && cashExpenses !== '') {
-                _this.expenses[itemExpenses] = +cashExpenses;
+                this.expenses[itemExpenses] = +cashExpenses;
             }
         });
 
     }
 
     getIncome() {
-        const _this = this;
         incomeItems.forEach((item) => {
             let itemIncome = item.querySelector('.income-title').value,
                 cashIncome = item.querySelector('.income-amount').value;
 
             if (itemIncome !== '' && cashIncome !== '') {
-                _this.income[itemIncome] = +cashIncome;
+                this.income[itemIncome] = +cashIncome;
             }
         });
 
@@ -156,22 +150,20 @@ class AppData {
     }
 
     getAddExpenses() {
-        const _this = this;
         const addExpenses = addExpensesItem.value.toLowerCase().split(',');
         addExpenses.forEach((item) => {
             item = item.trim();
             if (item !== '') {
-                _this.addExpenses.push(item);
+                this.addExpenses.push(item);
             }
         });
     }
 
     getAddIncome() {
-        const _this = this;
         addIncomeItems.forEach((item) => {
             const itemValue = item.value.trim();
             if (itemValue !== '') {
-                _this.addIncome.push(itemValue);
+                this.addIncome.push(itemValue);
             }
         });
     }
@@ -263,11 +255,10 @@ class AppData {
     }
 
     eventsListeners() {
-        const _this = this;
 
         // добавление блоков расходов/доходов
-        expensesPlusBtn.addEventListener('click', _this.addExpensesBlock);
-        incomePlusBtn.addEventListener('click', _this.addIncomeBlock);
+        expensesPlusBtn.addEventListener('click', this.addExpensesBlock);
+        incomePlusBtn.addEventListener('click', this.addIncomeBlock);
 
         // автоматическое изменение периода при изменении range
         periodSelect.addEventListener('input', () => {
@@ -280,9 +271,7 @@ class AppData {
 
         // ограничение ввода: только русские буквы и знаки препинания
         collectName.forEach((elem) => {
-            elem.addEventListener('input', function () {
-                textCheck(this);
-            });
+            elem.addEventListener('input', () => textCheck(elem));
         });
 
 
@@ -290,16 +279,14 @@ class AppData {
         let collectAmount = document.querySelectorAll('input[placeholder="Сумма"]');
         // ограничение ввода: только цифры
         collectAmount.forEach((elem) => {
-            elem.addEventListener('input', function () {
-                amountCheck(this);
-            });
+            elem.addEventListener('input', () => amountCheck(elem));
         });
 
         // обработчик события для кнопки старт
         start.addEventListener('click', (event) => {
             // проверка ввода бюджета
             if (salaryAmount.value !== '') {
-                _this.start.apply(_this);
+                this.start.apply(this);
                 let inputText = document.querySelectorAll('input[type=text] ');
 
                 // блокировка ввода во все input
@@ -313,7 +300,7 @@ class AppData {
 
                 // на cancel навешиваем обработчик события click
                 cancelButton.addEventListener('click', () => {
-                    _this.reset.apply(_this);
+                    this.reset.apply(this);
                 });
 
             } else {
