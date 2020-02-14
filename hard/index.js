@@ -82,10 +82,9 @@ class AppData {
         );
     }
 
-    addBlock() {
-
-        const startStr = this[0].className.split('-')[0],
-            cloneItem = this[0].cloneNode(true);
+    addBlock(btn, items) {
+        const startStr = items[0].className.split('-')[0],
+            cloneItem = items[0].cloneNode(true);
         cloneItem.querySelector(`.${startStr}-title`).value = '';
         cloneItem.querySelector(`.${startStr}-amount`).value = '';
 
@@ -94,15 +93,8 @@ class AppData {
         const itemAmountCheck = cloneItem.querySelector('input[placeholder="Сумма"');
         itemAmountCheck.addEventListener('input', () => amountCheck(itemAmountCheck));
 
-        let btn;
-        if (startStr === 'expenses') {
-            btn = expensesPlusBtn;
-        } else {
-            btn = incomePlusBtn;
-        }
-
-        this[0].parentNode.parentNode.insertBefore(cloneItem, btn);
-        const items = document.querySelectorAll('${startStr}-items');
+        items[0].parentNode.insertBefore(cloneItem, btn);
+        items = document.querySelectorAll(`.${startStr}-items`);
         if (items.length === 3) {
             btn.style.display = 'none';
         }
@@ -131,24 +123,18 @@ class AppData {
     }
 
     getAddExpInc() {
-        const count = item => {
-            const startStr = item.className.split('_');
-
-            const itemValue = item.value.trim();
+        const count = (item, addArr) => {
+            const itemValue = item.trim();
 
             if (itemValue !== '') {
-                if (startStr === 'expenses-item') {
-                    this.addExpenses.push(itemValue);
-                } else {
-                    this.addIncome.push(itemValue);
-                }
+                addArr.push(itemValue);
             }
         };
 
         const addExpenses = addExpensesItem.value.toLowerCase().split(',');
-        addExpenses.forEach(count);
+        addExpenses.forEach(item => count(item, this.addExpenses));
 
-        addIncomeItems.forEach(count);
+        addIncomeItems.forEach(item => count(item.value, this.addIncome));
 
     }
 
@@ -241,8 +227,8 @@ class AppData {
     eventsListeners() {
 
         // добавление блоков расходов/доходов
-        expensesPlusBtn.addEventListener('click', () => this.addBlock.apply(expensesItems));
-        incomePlusBtn.addEventListener('click', () => this.addBlock.apply(incomeItems));
+        expensesPlusBtn.addEventListener('click', () => this.addBlock(expensesPlusBtn, expensesItems));
+        incomePlusBtn.addEventListener('click', () => this.addBlock(incomePlusBtn, incomeItems));
 
         // автоматическое изменение периода при изменении range
         periodSelect.addEventListener('input', () => {
